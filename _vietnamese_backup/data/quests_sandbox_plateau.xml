@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE questdb SYSTEM ".quests.dtd">
+
+<questdb>
+
+	<include file = "data/common-quests.xml"/>
+
+	<group id="sandbox_plateau" avatar="client">
+
+		<quest id="SANDBOX_STARTQUEST" title="Welcome to sandbox mode." description="T_GAME_QUEST_SANDBOX_TRIBUTE_DESC_08" start="instant" finish="instant" visible="false">
+			<start_condition timeout="2"/>
+			<onSuccess>
+				<conversation>
+					<statement avatar="client" message="T_GAME_QUEST_SANDBOX_TRIBUTE_DESC_08" mood="advice" align="left"/>
+				</conversation>
+			</onSuccess>
+			<objectives timeout="2"/>
+			<rewards>
+				<set-flag key="sandbox_map_has_avalanche" value="true" />
+				<set-flag key="sandbox_map_has_thunderstorm" value="true" />
+				<set-flag key="sandbox_weather_enabled" value="true"/>
+			</rewards>
+		</quest>
+
+
+		<quest id="SANDBOX_AVALANCHE_LAUNCHER" start="custom" visible="false" finish="instant" repeatable="custom" >
+			<onStarted >
+				<start-quest id="SANDBOX_AVALANCHE_TICKET" />
+			</onStarted>
+			<objectives timeout="1" >
+				<random chance="50" />
+			</objectives>
+			<fail_condition timeout="2" />
+			<rewards >
+				<start-quest id="SANDBOX_AVALANCHE_01" />
+			</rewards>
+			<onFailed >
+				<start-quest id="SANDBOX_AVALANCHE_02" />
+			</onFailed>
+		</quest>
+		<quest id="SANDBOX_AVALANCHE_TICKET" start="custom" visible="false" finish="instant" repeatable="custom" >
+			<objectives timeout="10" />
+		        <ticket title="T_SANDBOX_AVALANCHE_TICKET" severity="warning" icon="notification_ui_avalanche" reference="options/cat_helppage/help_disasters/avalanche"/> 
+		</quest>
+		<quest id="SANDBOX_AVALANCHE_01" start="custom" visible="false" finish="instant" repeatable="custom" >
+			<rewards >
+				<avalanche topLeftX="15" topLeftY="75" bottomRightX="37" bottomRightY="102" minValue="-30" maxValue="-20" destroyOnNoDurability="true" avalancheSize="5" startOrientation="topRight" />
+			</rewards>
+		</quest>
+		<quest id="SANDBOX_AVALANCHE_02" start="custom" visible="false" finish="instant" repeatable="custom" >
+			<rewards >
+				<avalanche topLeftX="15" topLeftY="75" bottomRightX="37" bottomRightY="102" minValue="-60" maxValue="-50" destroyOnNoDurability="false" avalancheSize="5" startOrientation="topRight" />
+			</rewards>
+		</quest>
+
+
+	</group>
+
+</questdb>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE questdb SYSTEM ".quests.dtd">
+
+<questdb>
+	<include file = "data/common-quests_azure.xml"/>
+
+	<!--AZURE_MAP-->
+	<group id="sandbox_waterfalls" avatar="king">
+		
+		<quest id="SANDBOX_STARTQUEST" title="Welcome to sandbox mode." description="T_GAME_QUEST_SANDBOX_TRIBUTE_DESC_06" start="instant" finish="instant" visible="false">
+			<start_condition timeout="2"/>
+			<onSuccess>
+				<conversation>
+					<statement avatar="king" message="T_MAP_THE_WATERFALLS_INTRO" mood="greeting" align="right"/>
+				</conversation>
+			</onSuccess>
+			<objectives timeout="2"/>
+			<rewards>
+				<set-flag key="sandbox_map_has_avalanche" value="false" />
+				<set-flag key="sandbox_map_has_thunderstorm" value="true" />
+				<set-flag key="sandbox_weather_enabled" value="false"/>
+				<set-flag key="sandbox_weather_azure_enabled" value="true"/>
+			</rewards>
+		</quest>
+
+	</group>
+
+</questdb>

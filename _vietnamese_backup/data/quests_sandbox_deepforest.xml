@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE questdb SYSTEM ".quests.dtd">
+
+<questdb>
+	<include file = "data/common-quests.xml"/>
+
+	<group avatar="client" id="sandbox_deepforest">
+
+		<quest id="SANDBOX_STARTQUEST" title="Welcome to sandbox mode." description="T_GAME_QUEST_SANDBOX_TRIBUTE_DESC_DEEPFOREST" start="instant" finish="instant" visible="false">
+			<start_condition timeout="5"/>
+			<onSuccess>
+				<conversation>
+					<statement avatar="client" message="T_GAME_QUEST_SANDBOX_TRIBUTE_DESC_DEEPFOREST" mood="greeting" align="left"/>
+				</conversation>
+			</onSuccess>
+			<objectives timeout="2"/>
+			<rewards>
+				<set-flag key="sandbox_weather_enabled" value="true"/>
+				<set-flag key="sandbox_map_has_avalanche" value="false" />
+				<set-flag key="sandbox_map_has_thunderstorm" value="true" />
+			</rewards>
+		</quest>
+
+	</group>
+
+</questdb>

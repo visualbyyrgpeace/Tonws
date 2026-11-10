@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE questdb SYSTEM ".quests.dtd">
+
+<questdb>
+
+	<include file = "data/common-quests_azure.xml"/>
+
+	<group avatar="farmer">
+
+		<quest id="SANDBOX_STARTQUEST" title="Welcome to sandbox mode." description="T_GAME_QUEST_SANDBOX_WASTELAND_WELCOME" start="instant" finish="instant" visible="false" avatar="farmer">
+			<start_condition timeout="5"/>
+			<onSuccess>
+				<start-quest id="SANDBOX_STARTQUEST_NEXT"/>
+				<conversation>
+					<statement avatar="farmer" message="T_GAME_QUEST_SANDBOX_WASTELAND_WELCOME" mood="greeting" align="right"/>
+					<statement avatar="farmer" message="T_GAME_QUEST_SANDBOX_WASTELAND_WELCOME_02" mood="sad" align="right"/>
+				</conversation>
+			</onSuccess>
+			<objectives timeout="2"/>
+		</quest>
+
+		<quest id="SANDBOX_STARTQUEST_NEXT" start="custom" visible="false" finish="instant" avatar="client" repeatable="custom" >
+			<start_condition timeout="2"/>
+			<onStarted>
+				<set-modifier name="mod_production_building_farm" tag="map" value="60" />
+				<set-modifier name="mod_production_building_hopsfarm" tag="map" value="60" />
+				<set-modifier name="mod_production_building_winefarm" tag="map" value="60" />
+			</onStarted>
+		</quest>
+
+		<quest id="SANDBOX_START_VALUES" start="instant" visible="false" finish="instant" repeatable="custom" >
+			<rewards>
+				<set-flag key="sandbox_map_has_avalanche" value="false" />
+				<set-flag key="sandbox_map_has_thunderstorm" value="true" />
+				<set-flag key="sandbox_weather_enabled" value="false"/>
+				<set-flag key="sandbox_weather_azure_enabled" value="true"/>
+			</rewards>
+		</quest>
+	</group>
+
+</questdb>

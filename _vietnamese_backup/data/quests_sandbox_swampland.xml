@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE questdb SYSTEM ".quests.dtd">
+
+<questdb>
+
+	<include file = "data/common-quests.xml"/>
+
+	<group id="sandbox_swampland" avatar="client">
+
+		<quest id="SANDBOX_STARTQUEST" title="Welcome to sandbox mode." description="T_GAME_SANDBOX_START" start="instant" finish="instant" visible="false" avatar="client">
+			<start_condition timeout="5"/>
+			<onSuccess>
+				<conversation>
+					<statement avatar="client" message="T_GAME_SANDBOX_START" mood="advice" align="left"/>
+				</conversation>
+			</onSuccess>
+			<objectives timeout="2"/>
+			<rewards>
+				<set-flag key="sandbox_map_has_avalanche" value="false" />
+				<set-flag key="sandbox_map_has_thunderstorm" value="true" />
+				<set-flag key="sandbox_weather_enabled" value="true"/>
+			</rewards>
+		</quest>
+
+	</group>
+
+</questdb>
